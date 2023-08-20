@@ -1,5 +1,14 @@
 # Raspberry Pi Configuration Guide
 
+## Components for Raspberry Pi Setup
+
+- **SD Card**: Essential for installing the Raspberry Pi operating system.
+- **SD Card Reader**: Required if your laptop lacks an inbuilt SD card reader.
+- **Micro HDMI to HDMI Cable**: Required if you want to connect your Raspberry Pi to an HDMI TV or display, or any other appropriate converter or cable from micro HDMI to an output port.
+- **Ethernet Cable**: Required if you want to establish LAN connections.
+- **Power Adapter for Pi**: Necessary to provide power to the Raspberry Pi. A 5V power supply is suitable as well.
+- **Keyboard and Mouse**: Required for initial setup and configuration. If using a TV, ensure the USB dongle is connected to the Pi's USB port for input. If accessing via laptop, a separate keyboard and mouse are not necessary, as you can use the laptop's built-in keyboard and touchpad/mouse.
+
 ## Setup and Configuration of Raspberry Pi 4
 
 ### With Display (HDMI TV)
