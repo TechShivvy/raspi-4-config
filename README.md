@@ -27,7 +27,8 @@ There are several methods to find the IP address of your Raspberry Pi based on y
 
 ## Few more configurations
 
-### Enable VNC and SSH(use any 1 method):
+### Enable VNC and SSH
+Use any of the below methods:
  - GUI Method: Click on the Raspberry Pi icon (top left) -> Preferences -> Raspberry Pi Configuration -> Interfaces -> Enable SSH and VNC.
  - Command Line Method: Run `sudo raspi-config`, select "Interface Options," and enable SSH and VNC.
 
