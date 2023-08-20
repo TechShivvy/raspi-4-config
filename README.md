@@ -1,4 +1,4 @@
-# Raspberry Pi Configuration Guide
+# Raspberry Pi 4 Configuration Guide
 
 For any queries or uncertainties, please refer to the [Official Raspberry Pi documentation](https://www.raspberrypi.com/documentation/). This comprehensive resource can assist you in addressing any doubts you might have during the setup process.
 
