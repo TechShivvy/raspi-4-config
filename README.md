@@ -132,7 +132,7 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
 5. **Triple Check Key Information**:
    - Before connecting remotely to your Raspberry Pi, triple-check the following:
      - IP address (based on Wi-Fi or Ethernet).
-     - Username (default is usually `pi` / one you've set during configuration).
+     - Username (default is usually `pi` or the one you've set during configuration).
      - Password (the one you've set during configuration).
 
 By following these tips, you can ensure a smoother experience while working with your Raspberry Pi and minimize potential connectivity issues.
