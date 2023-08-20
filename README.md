@@ -1,6 +1,6 @@
 # Raspberry Pi Configuration Guide
 
-For any queries or uncertainties, please refer to the official Raspberry Pi documentation available at [https://www.raspberrypi.com/documentation/](https://www.raspberrypi.com/documentation/). This comprehensive resource can assist you in addressing any doubts you might have during the setup process.
+For any queries or uncertainties, please refer to the [Official Raspberry Pi documentation](https://www.raspberrypi.com/documentation/). This comprehensive resource can assist you in addressing any doubts you might have during the setup process.
 
 ## Components for Raspberry Pi Setup
 
