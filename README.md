@@ -20,7 +20,7 @@ For any queries or uncertainties, please refer to the [Official Raspberry Pi doc
 ### Without Display (Headless)
 
 1. Follow the initial steps of the official setup guide without connecting to a display.
-2. For an alternative headless setup guide, you can refer to this resource: [Raspberry Pi Headless Setup Guide](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html) or [Official Documentation for Headless](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi). However, note that using a display is often simpler.
+2. For an alternative headless setup guide, you can refer to this resource: [Raspberry Pi Headless Setup Guide](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html) or [Official Documentation for Headless](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi). However, note that **using a display is often simpler**.
 
 ## Finding Raspberry Pi's IP Address
 
@@ -114,7 +114,7 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
 ## QoL Tips
 
 1. **Proper Shutdown and Restart**:
-   - Avoid abruptly pulling out the power supply from the Raspberry Pi.
+   - Avoid abruptly pulling out the power supply from the Raspberry Pi to prevent data corruption and file loss.
    - Always use the commands `sudo poweroff` for a proper shutdown and `sudo reboot` for a restart in the Raspberry Pi terminal.
 
 2. **Double-Check Connection and IP**:
@@ -134,6 +134,9 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
      - IP address (based on Wi-Fi or Ethernet).
      - Username (default is usually `pi` or the one you've set during configuration).
      - Password (the one you've set during configuration).
+
+6. **Regular File Backups**:
+   - Raspberry Pi's SD cards can be vulnerable to corruption, which might lead to data loss. To mitigate this risk, regularly back up your important files and data to an external storage device, cloud storage, or another computer. This way, even if the SD card becomes corrupted, you'll still have a copy of your valuable data.
 
 By following these tips, you can ensure a smoother experience while working with your Raspberry Pi and minimize potential connectivity issues.
 
