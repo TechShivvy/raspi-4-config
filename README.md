@@ -20,7 +20,7 @@ For any queries or uncertainties, please refer to the [Official Raspberry Pi doc
 ### Without Display (Headless)
 
 1. Follow the initial steps of the official setup guide without connecting to a display.
-2. For an alternative headless setup guide, you can refer to this resource: [Raspberry Pi Headless Setup Guide](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html). However, note that using a display is often simpler.
+2. For an alternative headless setup guide, you can refer to this resource: [Raspberry Pi Headless Setup Guide](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html) or [Official Documentation for Headless](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi). However, note that using a display is often simpler.
 
 ## Finding Raspberry Pi's IP Address
 
