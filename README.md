@@ -195,6 +195,27 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
 
 By following these tips, you can ensure a smoother experience while working with your Pi and minimize potential connectivity issues.
 
+## FAQ
+
+1. **Managing SSH Host Key Changes**:
+   - If you encounter an SSH error like the one below when trying to connect to your Raspberry Pi:
+
+     ```
+     @@@@@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @@@@@
+     IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+     ...
+     ECDSA host key for raspberrypi.local has changed and you have requested strict checking.
+     Host key verification failed.
+     ```
+
+     This error can occur when the host key of your Raspberry Pi changes due to reasons such as reinstallation or IP changes. To resolve this issue and re-establish trust with the host, run the following command in your local terminal:
+
+     ```
+     ssh-keygen -R <ip>
+     ```
+
+     Replace `<ip>` with the IP address of your Raspberry Pi or its hostname (e.g., raspberrypi.local). This command removes the outdated key from your known_hosts file, allowing you to connect without the verification error.
+
 ## Conclusion
 
 This guide serves as a valuable resource for successfully harnessing the capabilities of your Raspberry Pi 4, empowering you to explore and engage with its features effectively.
