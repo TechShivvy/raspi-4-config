@@ -27,14 +27,24 @@ For any queries or uncertainties, please refer to the [Official Raspberry Pi doc
 There are several methods to find the IP address of your Raspberry Pi based on your connection:
 
 1. **Connected to Router**:
-   - If your Raspberry Pi is connected to the router using Ethernet, you can find its IP address using various methods:
+   - If your Raspberry Pi is connected to the router, whether via Wi-Fi or Ethernet, and your mobile device is connected to the same network, you can find its IP address using various methods:
      - Check your router's admin page to locate the connected devices section.
      - Use an app like "Fing" on your mobile device to scan for devices on your network.
      - Utilize commands like `nmap` in Linux to discover devices on your network.
 
-2. **Wi-Fi or Ethernet Connection**:
-   - When connected via Wi-Fi or Ethernet to your laptop, you can find the IP address by running the command `hostname -I` or `ifconfig` on the Raspberry Pi's command line.
+2. **Direct Access to Raspberry Pi**:
+   - If you have direct access to your Raspberry Pi, whether through SSH or a display connection, you can find the IP address by running the command `hostname -I` or `ifconfig` on the Raspberry Pi's command line.
    - Note down the IP addresses(inet) associated with the `eth0` (Ethernet) and `wlan0` (Wi-Fi) interfaces.
+3. **Using mDNS (Bonjour)**:
+   - If your laptop and Raspberry Pi are connected to the same network, or if the Raspberry Pi is connected via Ethernet to your laptop, you can use mDNS (Multicast DNS) to discover the Raspberry Pi's IP address easily.
+   - Open the command prompt or terminal on your laptop and run the following command:
+     ```
+     ping raspberrypi.local -4
+     ```
+     Replace `raspberrypi` with the actual hostname of your Raspberry Pi if you've changed it.
+   - If the Raspberry Pi is active and connected to the network, this command will send a ping request to the mDNS address and receive a reply containing the IP address of the Raspberry Pi.
+
+Remember that some methods might be more suitable depending on your network setup and the tools available to you.
 
 ## Few more configurations
 
@@ -60,7 +70,7 @@ If you want to share the internet connection from your laptop to the Raspberry P
 
 ## Accessing Raspberry Pi
 
-By using the respective IP addresses (`wlan0` or `eth0`), you can conveniently connect to your Raspberry Pi using either VNC or SSH based on your needs and preferences. (Refer to the section "Finding Raspberry Pi's IP Address" for details on obtaining the IP address.)
+If you're only using one Raspberry Pi on your network, the default hostname `raspberrypi.local` can be used to connect, but this will fail as you add more devices, so it's worth going with the IP address. By using the respective IP addresses (`wlan0` or `eth0`), you can conveniently connect to your Raspberry Pi using either VNC or SSH based on your needs and preferences. (Refer to the section "Finding Raspberry Pi's IP Address" for details on obtaining the IP address.)
 
 ### Access via VNC (remote graphical desktop access)
 
@@ -68,13 +78,13 @@ By using the respective IP addresses (`wlan0` or `eth0`), you can conveniently c
 
 - **VNC**:
   - For portable access, use VNC.
-  - Access VNC using the Wi-Fi IP address (`wlan0` IP).
-  - Open VNC Viewer, add a new connection using the obtained IP, and enter username and password.
+  - Access VNC using the Wi-Fi IP address (`wlan0` IP) or simply use `raspberrypi.local`.
+  - Open VNC Viewer, add a new connection using the obtained IP or `raspberrypi.local`(by default), and enter username and password.
 
 #### Wired (Ethernet) Connection:
 
 - **VNC**:
-  - Access VNC using the Ethernet IP (`eth0` IP).
+  - Access VNC using the Ethernet IP (`eth0` IP) or `raspberrypi.local`.
   - Access using VNC Viewer as explained above.
 
 ### Access via SSH (terminal access)
@@ -82,13 +92,13 @@ By using the respective IP addresses (`wlan0` or `eth0`), you can conveniently c
 #### Wireless (Wi-Fi) Connection:
 
 - **SSH**:
-  - Access SSH using the Wi-Fi IP address (`wlan0` IP).
-  - Open PowerShell/Terminal and enter: `ssh <username>@<ip>`.
+  - Access SSH using the Wi-Fi IP address (`wlan0` IP) or use `raspberrypi.local`.
+  - Open PowerShell/Terminal and enter: `ssh <username>@<ip>` or `ssh <username>@raspberrypi.local` or `ssh <username>@<hostname>.local`.
 
 #### Wired (Ethernet) Connection:
 
 - **SSH**:
-  - Access SSH using the Ethernet IP (`eth0` IP).
+  - Access SSH using the Ethernet IP (`eth0` IP) or `raspberrypi.local`.
   - Access using SSH as explained above.
 
 ## Transferring Files To/From Raspberry Pi
