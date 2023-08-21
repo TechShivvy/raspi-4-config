@@ -33,8 +33,20 @@ There are several methods to find the IP address of your Raspberry Pi based on y
      - Utilize commands like `nmap` in Linux to discover devices on your network.
 
 2. **Direct Access to Raspberry Pi**:
-   - If you have direct access to your Raspberry Pi, whether through SSH or a display connection, you can find the IP address by running the command `hostname -I` or `ifconfig` on the Raspberry Pi's command line.
-   - Note down the IP addresses(inet) associated with the `eth0` (Ethernet) and `wlan0` (Wi-Fi) interfaces.
+   - If you have direct access to your Raspberry Pi, whether through SSH or a display connection, you can find the IP address by running the following command on the Raspberry Pi's command line:
+     
+     To find the IP addresses associated with all network interfaces:
+     ```
+     hostname -I
+     ```
+
+     To find detailed information about the network interfaces, including IP addresses:
+     ```
+     ifconfig
+     ```
+
+   - After running these commands, note down the IP addresses (inet) associated with the available network interfaces(like `eth0` (Ethernet) and `wlan0` (Wi-Fi)).
+
 3. **Using mDNS (Bonjour)**:
    - If your laptop and Raspberry Pi are connected to the same network, or if the Raspberry Pi is connected via Ethernet to your laptop, you can use mDNS (Multicast DNS) to discover the Raspberry Pi's IP address easily.
    - Open the command prompt or terminal on your laptop and run the following command:
@@ -51,7 +63,11 @@ Remember that some methods might be more suitable depending on your network setu
 ### Enable VNC and SSH
 Use any of the below methods:
  - GUI Method: Click on the Raspberry Pi icon (top left) -> Preferences -> Raspberry Pi Configuration -> Interfaces -> Enable SSH and VNC.
- - Command Line Method: Run `sudo raspi-config`, select "Interface Options," and enable SSH and VNC.
+ - Command Line Method: Run the following command in the terminal:
+   ```bash
+   sudo raspi-config
+   ```
+Then, select "Interface Options," navigate to SSH and VNC options, and enable them as needed. This will allow you to configure and enable SSH and VNC access to your Raspberry Pi.
 
 ### Headless Display Resolution Configuration
 If Pi is headless, set a fixed resolution:
@@ -93,7 +109,24 @@ If you're only using one Raspberry Pi on your network, the default hostname `ras
 
 - **SSH**:
   - Access SSH using the Wi-Fi IP address (`wlan0` IP) or use `raspberrypi.local`.
-  - Open PowerShell/Terminal and enter: `ssh <username>@<ip>` or `ssh <username>@raspberrypi.local` or `ssh <username>@<hostname>.local`.
+  - Open PowerShell/Terminal and enter the following commands:
+
+      For connecting via IP address:
+      ```bash
+      ssh <username>@<ip>
+      ```
+      
+      For connecting using the default hostname "raspberrypi.local":
+      ```bash
+      ssh <username>@raspberrypi.local
+      ```
+      
+      For connecting using a custom hostname:
+      ```bash
+      ssh <username>@<hostname>.local
+      ```
+
+Replace `<username>` with your actual username and `<ip>` or `<hostname>` with the appropriate IP address or hostname of your Raspberry Pi.
 
 #### Wired (Ethernet) Connection:
 
@@ -124,8 +157,16 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
 ## QoL Tips
 
 1. **Proper Shutdown and Restart**:
-   - Avoid abruptly pulling out the power supply from the Raspberry Pi to prevent data corruption and file loss.
-   - Always use the commands `sudo poweroff` for a proper shutdown and `sudo reboot` for a restart in the Raspberry Pi terminal.
+   - To avoid data corruption and file loss, use the following commands in the Raspberry Pi terminal:
+     - For a proper shutdown:
+       ```
+       sudo poweroff
+       ```
+     - For a restart:
+       ```
+       sudo reboot
+       ```
+   - These commands ensure that your Raspberry Pi goes through a controlled shutdown and restart process.
 
 2. **Double-Check Connection and IP**:
    - If you encounter connection errors, verify that you are using the correct IP address based on your chosen connection method (Wi-Fi or Ethernet).
