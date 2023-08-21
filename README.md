@@ -50,6 +50,7 @@ There are several methods to find the IP address of your Raspberry Pi based on y
 3. **Using mDNS (Bonjour)**:
    - If your laptop and Raspberry Pi are connected to the same network, or if the Raspberry Pi is connected via Ethernet to your laptop, you can use mDNS (Multicast DNS) to discover the Raspberry Pi's IP address easily.
    - Open the command prompt or terminal on your laptop and run the following command:
+     
      ```
      ping raspberrypi.local -4
      ```
@@ -64,6 +65,7 @@ Remember that some methods might be more suitable depending on your network setu
 Use any of the below methods:
  - GUI Method: Click on the Raspberry Pi icon (top left) -> Preferences -> Raspberry Pi Configuration -> Interfaces -> Enable SSH and VNC.
  - Command Line Method: Run the following command in the terminal:
+   
    ```bash
    sudo raspi-config
    ```
@@ -159,10 +161,12 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
 1. **Proper Shutdown and Restart**:
    - To avoid data corruption and file loss, use the following commands in the Raspberry Pi terminal:
      - For a proper shutdown:
+       
        ```
        sudo poweroff
        ```
      - For a restart:
+       
        ```
        sudo reboot
        ```
