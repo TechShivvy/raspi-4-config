@@ -128,9 +128,7 @@ If you're only using one Pi on your network, the default hostname `raspberrypi.l
       ssh <username>@<hostname>.local
       ```
 
-Replace `<username>` with your actual username and `<ip>` or
-
- `<hostname>` with the appropriate IP address or hostname of your Pi.
+Replace `<username>` with your actual username and `<ip>` or `<hostname>` with the appropriate IP address or hostname of your Pi.
 
 #### Wired (Ethernet) Connection:
 
