@@ -15,47 +15,52 @@ For any queries or uncertainties, please refer to the [Official Raspberry Pi doc
 
 ### With Display (HDMI TV)
 
-1. Follow the official Raspberry Pi setup guide: [Raspberry Pi Setting Up](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/0).
+1. Follow the official Raspberry Pi setup guide: [Raspberry Pi Setting Up](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/0). However, during the installation process, opt for the 64-bit version instead of the recommended 32-bit version to take full advantage of your hardware capabilities.
 
 ### Without Display (Headless)
 
-1. Follow the initial steps of the official setup guide without connecting to a display.
-2. For an alternative headless setup guide, you can refer to this resource: [Raspberry Pi Headless Setup Guide](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html) or [Official Documentation for Headless](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi). However, note that **using a display is often simpler**.
+1. For an alternative headless setup guide, you can refer to this resource: [Raspberry Pi Headless Setup Guide](https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html) or [Official Documentation for Headless](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi). However, note that **using a display is often simpler**.
 
 ## Finding Pi's IP Address
 
 There are several methods to find the IP address of your Pi based on your connection:
 
-1. **Connected to Router**:
-   - If your Pi is connected to the router, whether via Wi-Fi or Ethernet, and your mobile device is connected to the same network, you can find its IP address using various methods:
-     - Check your router's admin page to locate the connected devices section.
-     - Use an app like "Fing" on your mobile device to scan for devices on your network.
-     - Utilize commands like `nmap` in Linux to discover devices on your network.
+**When Connected to the Same Network:**
 
-2. **Direct Access to Pi**:
-   - If you have direct access to your Pi, whether through SSH or a display connection, you can find the IP address by running the following command on the Pi's command line:
-     
-     To find the IP addresses associated with all network interfaces:
-     ```
-     hostname -I
-     ```
+1. **Connected via Network**:
+   - If your Pi is connected to the network, either through Wi-Fi or Ethernet, and your mobile/laptop is on the same network, you can find its IP address using various methods:
+     - Access your router's admin page to locate the connected devices section.
+     - Utilize an application like "Fing" on your mobile device to scan for devices within your network.
+     - Employ commands such as `nmap` in a Linux environment to discover devices on the network.
 
-     To find detailed information about the network interfaces, including IP addresses:
-     ```
-     ifconfig
-     ```
-
-   - After running these commands, note down the IP addresses (inet) associated with the available network interfaces (like `eth0` (Ethernet) and `wlan0` (Wi-Fi)).
-
-3. **Using mDNS (Bonjour)**:
-   - If your laptop and Pi are connected to the same network, or if the Pi is connected via Ethernet to your laptop, you can use mDNS (Multicast DNS) to discover the Pi's IP address easily.
-   - Open the command prompt or terminal on your laptop and run the following command:
+2. **Using mDNS (Bonjour)**:
+   - When your laptop and Pi are part of the same network, or if the Pi is connected via Ethernet to your laptop, you can employ mDNS (Multicast DNS) to effortlessly find the Pi's IP address.
+   - Launch the command prompt or terminal on your laptop and execute the following command:
      
      ```
      ping raspberrypi.local -4
      ```
-     Replace `raspberrypi` with the actual hostname of your Pi if you've changed it.
-   - If the Pi is active and connected to the network, this command will send a ping request to the mDNS address and receive a reply containing the IP address of the Pi.
+     If you've changed the hostname of your Pi, replace `raspberrypi` with the updated name.
+     
+     Note: Keep in mind that mDNS might not work reliably if you have multiple Raspberry Pi devices on the network, as the .local address might not uniquely identify each device.
+   - When the Pi is active and connected to the network, this command will send a ping request to the mDNS address and receive a reply containing the IP address of the Pi.
+
+**When You Have Direct Access to the Pi:**
+
+3. **Direct Access to Pi**:
+   - If you possess direct access to your Pi, whether through SSH or a display connection, you can determine the IP address by executing the following command on the Pi's command line:
+     
+     To discover the IP addresses linked to all network interfaces:
+     ```
+     hostname -I
+     ```
+
+     To obtain detailed information about the network interfaces, including IP addresses:
+     ```
+     ifconfig
+     ```
+
+   - After executing these commands, make a note of the IP addresses (inet) linked to the available network interfaces (such as `eth0` for Ethernet and `wlan0` for Wi-Fi).
 
 Remember that some methods might be more suitable depending on your network setup and the tools available to you.
 
@@ -193,9 +198,12 @@ scp -r <full path to file or folder> <username>@<ip>:/home/<username>/<path to c
 6. **Regular File Backups**:
    - Pi's SD cards can be vulnerable to corruption, which might lead to data loss. To mitigate this risk, regularly back up your important files and data to an external storage device, cloud storage, or another computer. This way, even if the SD card becomes corrupted, you'll still have a copy of your valuable data.
 
+7. **Always Be Prepared**:
+   - It's a good practice to have a microSD card reader and an Ethernet cable readily available. These tools can come in handy if you need to troubleshoot or make changes to your Raspberry Pi setup on the go. An Ethernet cable can provide a fast and reliable connection, especially when you're in a new place where Wi-Fi might not be readily available.
+
 By following these tips, you can ensure a smoother experience while working with your Pi and minimize potential connectivity issues.
 
-## FAQ
+## Common Issues and Fixes
 
 1. **Managing SSH Host Key Changes**:
    - If you encounter an SSH error like the one below when trying to connect to your Raspberry Pi:
@@ -215,6 +223,36 @@ By following these tips, you can ensure a smoother experience while working with
      ```
 
      Replace `<ip>` with the IP address of your Raspberry Pi or its hostname (e.g., raspberrypi.local). This command removes the outdated key from your known_hosts file, allowing you to connect without the verification error.
+
+2. **Maximized Window Does Not Fill Desktop in Headless Mode**:
+    - Open the `config.txt` file using the command: `sudo nano /boot/config.txt`
+    - Look for the lines containing `framebuffer_width` and `framebuffer_height`. If they are commented (with a `#` at the beginning), remove the `#` to uncomment them. If they are not present, add the following lines:
+        ```
+        framebuffer_width=1920
+        framebuffer_height=1080
+        ```
+        You can adjust the values (1920 and 1080) according to your desired resolution.
+    - Save the file and reboot Pi.
+
+     If this solution doesn't work for you, you can also experiment with other options mentioned in this [GitHub issue thread](https://github.com/raspberrypi/Raspberry-Pi-OS-64bit/issues/225), such as setting `hdmi_group`, `hdmi_mode`, or `hdmi_cvt` values to tailor the resolution to your needs.
+
+3. **'Cannot Currently Show the Desktop' Error**:
+
+Encountering the 'Cannot Currently Show the Desktop' error can be frustrating, and while a definitive fix might be elusive, there are a few strategies you can try. Most solutions you'll find online involve adjusting settings in the `/boot/config.txt` file. Although no one-size-fits-all solution exists, here are a couple of steps that might help:
+
+1. **Uncomment `hdmi_safe=1`**:
+   - Open the `/boot/config.txt` file by using the command: `sudo nano /boot/config.txt`.
+   - Look for the line containing `hdmi_safe=1`. If it's commented out (preceded by a `#`), remove the `#` to uncomment it. If this line is not present, add it.
+   - Save the file and reboot your Raspberry Pi.
+
+2. **Exploring Other Options**:
+   - Other solutions involve experimenting with different combinations of `hdmi_flags`, `hdmi_group`, `hdmi_mode`, and `hdmi_cvt` settings in the `config.txt` file.
+   - You can try different values and configurations to see if they resolve the issue. It might require a bit of trial and error.
+
+3. **Further Exploration**:
+   - The 'Cannot Currently Show the Desktop' error is quite specific, and solutions might depend on the exact circumstances.
+   - If the above solutions don't work, it's worth searching online forums, websites, and platforms like YouTube for additional strategies that have worked for others.
+
 
 ## Conclusion
 
